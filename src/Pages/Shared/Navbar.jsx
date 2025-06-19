@@ -1,17 +1,36 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../../Contexts/AuthContext";
 
 const Navbar = () => {
+  const { user, signOutUser } = use(AuthContext);
 
-    const links = <>
-    
-    <li>
+
+  const handleSignOut = () => {
+    signOutUser()
+    .then(() =>{
+        console.log("User signed out successfully");
+    })
+    .catch(error =>{
+        console.error("Error signing out:", error);
+    })
+  }
+
+  const links = (
+    <>
+     <li>
         <NavLink to="/">Home</NavLink>
-    </li>
-    <li><a>Categories</a></li>
-    <li><a>Products</a></li>
+      </li>
+      <li>
+        <a>Categories</a>
+      </li>
+      <li>
+        <a>Products</a>
+      </li>
     </>
-
+     
+   
+  );
 
   return (
     <div>
@@ -40,19 +59,29 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
-             
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl"><span className="text-cyan-400">Happy</span><span className="text-amber-500">Shop</span></a>
+          <a className="btn btn-ghost text-xl">
+            <span className="text-cyan-400">Happy</span>
+            <span className="text-amber-500">Shop</span>
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-            
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <NavLink className="btn btn-accent" to="/register">Register</NavLink>
+        <div className="navbar-end gap-3">
+          {user ? (
+            <button onClick={handleSignOut} className="btn btn-primary">Sign Out</button>
+          ) : (
+            <>
+              <NavLink className="btn btn-accent" to="/register">
+                Register
+              </NavLink>
+              <NavLink className="btn btn-secondary" to="/signin">
+                Sign In
+              </NavLink>
+            </>
+          )}
         </div>
       </div>
     </div>

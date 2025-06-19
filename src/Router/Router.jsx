@@ -4,6 +4,7 @@ import RootLayout from '../layouts/RootLayout';
 import Home from '../Pages/Home/Home';
 import Register from '../Pages/Register/Register';
 import SignIn from '../Pages/signIn/SignIn';
+import Categories from '../Pages/Categories/Categories';
 
 const Router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const Router = createBrowserRouter([
             {
                 path: '/signin',
                 Component: SignIn
+            },
+            {
+                path: '/categories',
+                Component: Categories
             }
         ],
     },

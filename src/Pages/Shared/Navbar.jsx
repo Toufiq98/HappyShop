@@ -18,14 +18,14 @@ const Navbar = () => {
 
   const links = (
     <>
-     <li>
+     <li className="font-semibold">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="font-semibold">
         <NavLink to='/categories'>Categories</NavLink>
       </li>
-      <li>
-        <a>Products</a>
+      <li className="font-semibold">
+        <NavLink to='/products'>Products</NavLink>
       </li>
     </>
      

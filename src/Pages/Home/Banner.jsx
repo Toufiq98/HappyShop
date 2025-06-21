@@ -36,14 +36,14 @@ const Banner = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        delay: 0.5
+        delay: 5.5
       }
     },
     hover: {
       scale: 1.05,
       transition: {
         yoyo: Infinity,
-        duration: 0.5
+        duration: 4.5
       }
     }
   };
@@ -53,7 +53,7 @@ const Banner = () => {
     visible: {
       scale: 1,
       transition: {
-        duration: 1,
+        duration: 4,
         ease: "easeOut"
       }
     }
